@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins=('https://localhost', 'http://localhost'))
+socketio = SocketIO(app, cors_allowed_origins=("http://127.0.0.1:5004", "https://api-xieffect.herokuapp.com/"))
 
 
 @app.route('/')
