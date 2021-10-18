@@ -7,11 +7,11 @@ socketio = SocketIO(app)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    return render_template('index.html', cors_allowed_origins='https://localhost')
 
 
 @socketio.on("message")
-def handleMessage(data):
+def handle_message(data):
     emit("new_message", data, broadcast=True)
 
 
