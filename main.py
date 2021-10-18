@@ -1,25 +1,19 @@
 from flask import Flask, render_template
-from flask_socketio import SocketIO
+from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
 socketio = SocketIO(app)
 
 
-@app.route("/")
+@app.route('/')
 def index():
-    return render_template("index.html", )
+    return render_template('index.html')
 
 
-@socketio.on('message')
-def handle_message(data):
-    print('received message: ' + data)
-
-
-@socketio.on('my event')
-def handle_my_custom_event(json):
-    print('received json: ' + str(json))
+@socketio.on("message")
+def handleMessage(data):
+    emit("new_message", data, broadcast=True)
 
 
 if __name__ == "__main__":
-    socketio.run(app)
-print("Is it here?")
+    socketio.run(app, debug=True, port=5004)
