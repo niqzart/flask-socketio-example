@@ -2,7 +2,7 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio = SocketIO(app, cors_allowed_origins='https://localhost')
+socketio = SocketIO(app, cors_allowed_origins=('https://localhost', 'http://localhost'))
 
 
 @app.route('/')
