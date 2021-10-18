@@ -2,12 +2,12 @@ from flask import Flask, render_template
 from flask_socketio import SocketIO, emit
 
 app = Flask(__name__)
-socketio = SocketIO(app)
+socketio = SocketIO(app, cors_allowed_origins='https://localhost')
 
 
 @app.route('/')
 def index():
-    return render_template('index.html', cors_allowed_origins='https://localhost')
+    return render_template('index.html')
 
 
 @socketio.on("message")
