@@ -6,11 +6,13 @@
     <script type="text/javascript" charset="utf-8">
       var socket = io.connect('http://' + document.domain + ':' + location.port);
       socket.on('echo', function(data){
+        console.log(data.echo)
         $('#response').html('<p>'+data.echo+'</p>');
       });
 
       function send(){
         socket.emit('send_message', {message : $('form textarea').val()});
+        console.log($('form textarea').val())
       }
     </script>
     <style>
